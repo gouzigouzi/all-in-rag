@@ -148,13 +148,13 @@ docs = text_splitter.split_documents(documents)
 
 # 2. 创建向量存储和基础检索器
 vectorstore = FAISS.from_documents(docs, hf_bge_embeddings)
-base_retriever = vectorstore.as_retriever(search_kwargs={"k": 20})
+base_retriever = vectorstore.as_retriever(search_kwargs={"k": 20})  # 基础检索返回前20个文档
 
 # 3. 设置ColBERT重排序器
 reranker = ColBERTReranker()
 
 # 4. 设置LLM压缩器
-compressor = LLMChainExtractor.from_llm(llm)
+compressor = LLMChainExtractor.from_llm(llm)  # 从文档中提取与查询相关的句子
 
 # 5. 使用DocumentCompressorPipeline组装压缩管道
 # 流程: ColBERT重排 -> LLM压缩

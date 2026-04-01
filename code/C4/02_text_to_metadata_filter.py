@@ -80,9 +80,9 @@ llm = ChatDeepSeek(
 
 retriever = SelfQueryRetriever.from_llm(
     llm=llm,
-    vectorstore=vectorstore,
+    vectorstore=vectorstore,  # 向量存储
     document_contents="记录视频标题、作者、观看次数等信息的视频元数据",
-    metadata_field_info=metadata_field_info,
+    metadata_field_info=metadata_field_info,  # 元数据字段信息
     enable_limit=True,
     verbose=True
 )
